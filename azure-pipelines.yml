@@ -11,6 +11,7 @@ pool:
 
 variables:
   solution: '**/*.sln'
+  project: '**/FocusSquad.Api.csproj'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
 
@@ -23,21 +24,21 @@ steps:
   inputs:
     command: 'custom'
     custom: 'tool'
-    arguments: 'install --global dotnet-ef --version 7'
+    arguments: 'install --global dotnet-ef --version 8'
 
 # - task: DotNetCoreCLI@2
 #   displayName: Generate EF Core Migrations SQL script
 #   inputs:
 #     command: 'custom'
 #     custom: 'ef'
-#     arguments: 'migrations script --project ./CarSquad.Infrastructure.Migrations --startup-project ./Server -o $(Build.ArtifactStagingDirectory)/migrationScript.sql --idempotent --no-build --configuration $(buildConfiguration)'
+#     arguments: 'migrations script --project ./FocusSquad.Infrastructure.Migrations --startup-project ./Server -o $(Build.ArtifactStagingDirectory)/migrationScript.sql --idempotent --no-build --configuration $(buildConfiguration)'
 
 # - task: DotNetCoreCLI@2
 #   name: 'Tests'
 #   displayName: 'Run tests'
 #   inputs:
 #     command: 'test'
-#     projects: '**/CarSquad.Test.csproj'
+#     projects: '**/FocusSquad.Test.csproj'
 #     arguments: '--configuration $(BuildConfiguration)'
  
 - task: DotNetCoreCLI@2
